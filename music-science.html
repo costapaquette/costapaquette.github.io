@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en-AU"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>From Music to Science | Interactive Founder Story | ItisScientific</title>
-<meta name="description" content="An interactive, illustrated transformation of ItisScientific founder Costa Arvanitis from musician with a guitar to a scientist in a lab coat.">
+<meta name="description" content="An interactive music-to-science experience including an AI-generated five-second photo transformation and a four-stage illustrated scene of founder Costa Arvanitis.">
 <meta name="theme-color" content="#071a24"><meta name="robots" content="index,follow">
 <link rel="canonical" href="https://www.itisscientific.com.au/music-science.html">
 <style>
@@ -24,9 +24,28 @@
 .status{font-size:.87rem;color:var(--muted);margin:10px 0}.steps h2{font-size:clamp(1.4rem,2.7vw,2rem);letter-spacing:-.02em;line-height:1.2;margin:0 0 15px}.steps p{color:var(--muted)}.step-list{list-style:none;padding:0;margin:25px 0}.step-list li{padding:10px 0 10px 22px;border-left:3px solid #46666d;color:#c7d8d5}.step-list li b{display:block;color:#ecf5ef}.step-list li.active{border-color:var(--green);background:#143b414a}.small{font-size:.9rem}.footer{padding:33px 0;border-top:1px solid var(--border);color:#b5cec6}
 @media(max-width:800px){.layout{grid-template-columns:1fr}.player{max-width:520px;margin:auto}.nav-inner{flex-direction:column;align-items:flex-start;padding:16px 0;gap:8px}.hero{padding:42px 0 25px}}
 @media(prefers-reduced-motion:reduce){.music,.lab,.person,.glasses{transition:none!important}}
+
+/* Generated visual sequence: selectable movie, never autoplayed. */
+.video-feature{display:grid;grid-template-columns:minmax(190px,270px) minmax(220px,1fr);align-items:center;gap:30px;padding-top:27px;padding-bottom:53px}
+.video-feature video{width:100%;aspect-ratio:1/1;display:block;border:1px solid #668a81;border-radius:14px;object-fit:cover;background:#132c33}
+.video-feature h2{margin:9px 0 14px;font-size:clamp(1.45rem,3vw,2.2rem);line-height:1.18}
+.video-feature p{color:var(--muted);max-width:590px}
+.video-feature button{padding:11px 16px;border-radius:8px;border:1px solid var(--green);background:var(--green);color:#09232c;font-weight:750;cursor:pointer;min-height:45px}
+.video-feature .note{font-size:.88rem;color:#c5d8d4}
+@media(max-width:700px){.video-feature{grid-template-columns:1fr}.video-feature video{max-width:280px}}
 </style></head>
 <body><header class="nav"><div class="wrap nav-inner"><a class="brand" href="/">Itis<span>Scientific</span></a><nav class="navlinks" aria-label="Main navigation"><a href="/">Home</a><a href="about-founder.html">Founder</a><a href="publications.html">Research publications</a><a href="enquiries.html">Contact</a></nav></div></header>
 <main><section class="hero"><div class="wrap"><div class="eyebrow">ItisScientific · The founder's two passions</div><h1>From music to science.</h1><p>The guitarist becomes the researcher. Explore a playful interactive transformation inspired by the founder's original portrait and his work in the laboratory.</p></div></section>
+<section class="wrap video-feature" aria-label="Photographic transformation animation">
+<div><video id="generated-transition" controls playsinline preload="metadata" poster="images/costa-arvanitis-guitar.webp" aria-label="Five-second artistic transformation from seated guitarist to researcher putting on a laboratory coat">
+<source src="media/music-to-laboratory.mp4" type="video/mp4">
+Your browser does not support inline video. <a href="media/music-to-laboratory.mp4">Open the animation</a>.
+</video></div>
+<div><div class="eyebrow">Animated photographic concept · 5 seconds</div><h2>From a guitarist to a laboratory researcher</h2>
+<p>Watch the musician set down the guitar, stand up and appear wearing a white lab coat and safety glasses in a scientific laboratory. Based on the founder's supplied photograph, this sequence is an <strong>AI-generated creative visualisation</strong>, not historical footage.</p>
+<button type="button" id="replay-generated">↻ Replay the video</button>
+<p class="note">Playback is user-controlled and remains paused by default. The illustrated, four-stage transformation below is an alternative interactive experience.</p>
+</div></section>
 <section class="wrap layout"><div class="player">
 <div class="screen" id="scene" data-stage="0" role="img" aria-label="Original photo of the founder seated with a guitar transforms into an illustrated standing researcher in a white laboratory coat, goggles and scientific laboratory">
 <div class="music"><img src="images/costa-arvanitis-guitar.webp" width="320" height="379" alt="Original photograph of Costa Arvanitis sitting and playing a classical guitar"></div>
@@ -40,6 +59,13 @@
 <p class="small">This is a creative illustrated website transition using the founder's original photograph; the laboratory scene is an artistic representation, not a documentary photograph.</p>
 <p><a href="about-founder.html">Explore the real research history →</a></p></div></section></main>
 <footer class="footer"><div class="wrap">© 2026 ItisScientific · Pinnaroo, South Australia · <a href="/">Return to the homepage</a></div></footer>
+<script>
+(()=>{
+const clip=document.getElementById("generated-transition");
+const replayClip=document.getElementById("replay-generated");
+replayClip.addEventListener("click",()=>{clip.pause();clip.currentTime=0;const attempt=clip.play();if(attempt&&typeof attempt.catch==="function"){attempt.catch(()=>{});}});
+})();
+</script>
 <script>
 (()=>{
 const scene=document.getElementById("scene"),cue=document.getElementById("cue"),bar=document.getElementById("bar"),progress=bar.parentElement,status=document.getElementById("status"),play=document.getElementById("play"),pause=document.getElementById("pause"),restart=document.getElementById("restart"),steps=[...document.querySelectorAll("#steps li")];
